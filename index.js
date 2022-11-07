@@ -14,17 +14,22 @@ app.post("/sign-up",(req,res)=>{
         username,
         avatar
     });
-    console.log(usuarios);
     res.send("OK");
 });
 app.post("/tweets",(req,res)=>{
     const {username, tweet} = req.body;
+    const {avatar} = usuarios.find(u=>u.username===username);
     tweets.push({
         username,
+        avatar,
         tweet
     });
-    console.log(tweets);
     res.send("OK");
+});
+
+app.get("/tweets",(req,res)=> {
+    const {username,tweet}=req.body;
+    res.send(tweets);
 });
 
 app.listen(5000);
