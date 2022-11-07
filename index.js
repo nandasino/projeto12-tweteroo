@@ -18,8 +18,9 @@ app.post("/sign-up",(req,res)=>{
         username,
         avatar
     });
-    res.status(201).send({message:"OK"});
+    res.status(201).send("OK");
 });
+
 app.post("/tweets",(req,res)=>{
     const {username, tweet} = req.body;
     const {avatar} = usuarios.find(u=>u.username===username);
@@ -40,9 +41,11 @@ app.get("/tweets",(req,res)=> {
     const tweetsfeed= tweets.slice(-10);
     res.send(tweetsfeed);
 });
+
 app.get("/tweets/:username",(req,res)=>{
     const {username} = req.params;
     const filtro = tweets.filter(t=> t.username===username);
     res.send(filtro);
-})
+});
+
 app.listen(5000);
