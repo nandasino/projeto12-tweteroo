@@ -28,8 +28,8 @@ app.post("/tweets",(req,res)=>{
 });
 
 app.get("/tweets",(req,res)=> {
-    const {username,tweet}=req.body;
-    res.send(tweets);
+    const tweetsfeed= tweets.slice(-10);
+    res.send(tweetsfeed);
 });
 
 app.listen(5000);
