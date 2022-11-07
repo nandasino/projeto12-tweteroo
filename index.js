@@ -40,5 +40,9 @@ app.get("/tweets",(req,res)=> {
     const tweetsfeed= tweets.slice(-10);
     res.send(tweetsfeed);
 });
-
+app.get("/tweets/:username",(req,res)=>{
+    const {username} = req.params;
+    const filtro = tweets.filter(t=> t.username===username);
+    res.send(filtro);
+})
 app.listen(5000);
